@@ -24,6 +24,8 @@ const ToDoList = ({ defaultNumClicked }) => {
   const [numClicked, setNumClicked] = useState(0);
   const [numClickedArray, setNumClickedArray] = useState([]);
 
+  const [toDoItems, setToDoItems] = useState([]);
+
   // Example of a useEffect:
   // You define a useState by passing two arguments, the first one being a function that will be
   // executed everytime the useEffect is called. The second being a dependency list of component states (variables).
@@ -48,6 +50,23 @@ const ToDoList = ({ defaultNumClicked }) => {
   return (
     <div>
       <h1>To-do List App</h1>
+      <AddToDoListItemBar
+        toDoList={toDoItems}
+        toDoListSet={setToDoItems}
+      ></AddToDoListItemBar>
+      <table>
+        <tbody>
+          {toDoItems.map((element, index) => {
+            return (
+              <tr key={index}>
+                <ToDoListItem toDoName={element}></ToDoListItem>
+                <button onClick={() => deleteItem(index)}></button>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+
       <h5>Num Clicked: {numClicked}</h5>
       <button onClick={() => setNumClicked(numClicked + 1)}>Click me!</button>
       <table>
