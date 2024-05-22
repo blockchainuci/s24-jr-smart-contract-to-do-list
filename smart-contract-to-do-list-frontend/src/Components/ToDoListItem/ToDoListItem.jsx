@@ -3,14 +3,14 @@ import "./ToDoListItem.css";
 
 export default function TodoItem(task) {
 
-    const [isChecked, setChecked] = useState(false);
+    const [isChecked, setChecked] = useState("none");
 
     function check() {
-        if (isChecked == false) {
-            setChecked(isChecked = true);
+        if (isChecked == "none") {
+            setChecked("line-through");
             console.log(isChecked)
         } else {
-            setChecked(isChecked = false)
+            setChecked("none")
             console.log(isChecked)
         }
         
@@ -19,7 +19,7 @@ export default function TodoItem(task) {
     return(
         <div className="TodoItem">
             <p className="TodoText">{task}</p>
-            <button className="TodoButton" onclick={check()}>Check off!</button>
+            <button className="TodoButton" text-decoration={isChecked} onclick={check()}>Check off!</button>
         </div>
     )
 }
