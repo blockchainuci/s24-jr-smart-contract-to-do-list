@@ -59,8 +59,8 @@ const ToDoList = ({ defaultNumClicked }) => {
           {toDoItems.map((element, index) => {
             return (
               <tr key={index}>
-                <ToDoListItem toDoName={element}></ToDoListItem>
-                <button onClick={() => deleteItem(index)}></button>
+                <p>element[0]</p>{/*<ToDoListItem toDoName={element}></ToDoListItem>*/}
+                {/*<button onClick={() => deleteItem(index)}></button> */}
               </tr>
             );
           })}
