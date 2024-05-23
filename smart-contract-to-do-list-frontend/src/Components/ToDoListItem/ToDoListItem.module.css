@@ -1,0 +1,10 @@
+.to-do-item {
+  background-color: rgb(236, 232, 232);
+  display: flex;
+  width: 200px;
+  padding: 5px;
+  justify-content: space-between;
+}
+
+.to-do.text {
+}

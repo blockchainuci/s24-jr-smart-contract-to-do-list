@@ -1,5 +1,6 @@
-import "./ToDoList.module.css";
-import AddToDoListItemBar from '../AddToDoListItemBar/AddToDoListItemBar';
+import styles from "./ToDoList.module.css";
+import AddToDoListItemBar from "../AddToDoListItemBar/AddToDoListItemBar";
+import ToDoItem from "../ToDoListItem/ToDoListItem";
 import { useEffect, useState } from "react";
 
 // This is a component, which is the heart of React. You declare components like a function, and they can take
@@ -26,6 +27,12 @@ const ToDoList = ({ defaultNumClicked }) => {
 
   const [toDoItems, setToDoItems] = useState([]);
 
+  const changeToDoStatus = (index) => {
+    let updatedToDoItems = [...toDoItems];
+    updatedToDoItems[index][1] = !updatedToDoItems[index][1];
+    setToDoItems(updatedToDoItems);
+  };
+
   // Example of a useEffect:
   // You define a useState by passing two arguments, the first one being a function that will be
   // executed everytime the useEffect is called. The second being a dependency list of component states (variables).
@@ -48,7 +55,7 @@ const ToDoList = ({ defaultNumClicked }) => {
   // javascript code.
   // this part of the code essentially determines how your component will look
   return (
-    <div>
+    <div className={styles["to-do-list"]}>
       <h1>To-do List App</h1>
       <AddToDoListItemBar
         toDoList={toDoItems}
@@ -59,14 +66,22 @@ const ToDoList = ({ defaultNumClicked }) => {
           {toDoItems.map((element, index) => {
             return (
               <tr key={index}>
-                <ToDoListItem toDoName={element}></ToDoListItem>
-                <button onClick={() => deleteItem(index)}></button>
+                <td>
+                  <ToDoItem
+                    taskName={element[0]}
+                    taskStatus={element[1]}
+                    changeStatus={changeToDoStatus}
+                    index={index}
+                  ></ToDoItem>
+                  {/* <button onClick={() => deleteItem(index)}></button> */}
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
 
+      {/* Example code for explaining React concepts:
       <h5>Num Clicked: {numClicked}</h5>
       <button onClick={() => setNumClicked(numClicked + 1)}>Click me!</button>
       <table>
@@ -79,7 +94,7 @@ const ToDoList = ({ defaultNumClicked }) => {
             );
           })}
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 };

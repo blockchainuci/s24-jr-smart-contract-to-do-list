@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import ToDoList from '../ToDoList/ToDoList';
-import "./AddToDoListItemBar"
+import React, { useEffect, useState } from "react";
+import "./AddToDoListItemBar";
 
-const AddToDoListItemBar = ({toDoList, toDoListSet }) => {
-  const [inputValue, setInputValue] = useState('');
-
+const AddToDoListItemBar = ({ toDoList, toDoListSet }) => {
+  const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -13,7 +11,7 @@ const AddToDoListItemBar = ({toDoList, toDoListSet }) => {
   const handleAddItem = () => {
     if (inputValue.trim()) {
       toDoListSet([...toDoList, [inputValue, false]]);
-      setInputValue('');
+      setInputValue("");
     }
   };
 
