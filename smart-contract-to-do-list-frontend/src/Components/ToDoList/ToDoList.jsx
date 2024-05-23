@@ -33,6 +33,8 @@ const ToDoList = ({ defaultNumClicked }) => {
     setToDoItems(updatedToDoItems);
   };
 
+  const deleteToDoItem = (index) => {};
+
   // Example of a useEffect:
   // You define a useState by passing two arguments, the first one being a function that will be
   // executed everytime the useEffect is called. The second being a dependency list of component states (variables).
@@ -73,7 +75,7 @@ const ToDoList = ({ defaultNumClicked }) => {
                     changeStatus={changeToDoStatus}
                     index={index}
                   ></ToDoItem>
-                  {/* <button onClick={() => deleteItem(index)}></button> */}
+                  <button onClick={() => deleteToDoItem(index)}></button>
                 </td>
               </tr>
             );
