@@ -13,11 +13,11 @@ const ToDoList = () => {
     setToDoItems(updatedToDoItems);
   };
 
-  const deleteToDoItem = (element) => {
+  const deleteToDoItem = (targetIndex) => {
     // Filter method: https://react.dev/learn/updating-arrays-in-state
-    setToDoItems(toDoItems.filter((value, index) => {
-      
-    }))
+    setToDoItems(toDoItems.filter((value, itemIndex) => 
+      itemIndex !== targetIndex
+    ))
   };
 
   return (
@@ -27,6 +27,7 @@ const ToDoList = () => {
         toDoList={toDoItems}
         toDoListSet={setToDoItems}
       ></AddToDoListItemBar>
+      <p>Items: {toDoItems.length}</p>
       <table>
         <tbody>
           {toDoItems.map((element, index) => {
@@ -39,7 +40,7 @@ const ToDoList = () => {
                     changeStatus={changeToDoStatus}
                     index={index}
                   ></ToDoItem>
-                  <button onClick={() => deleteToDoItem(index)}></button>
+                  <button onClick={() => deleteToDoItem(index)}>Delete</button>
                 </td>
               </tr>
             );
