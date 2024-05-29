@@ -10,7 +10,9 @@ const ToDoList = () => {
   const changeToDoStatus = (index) => {
     let updatedToDoItems = [...toDoItems];
     updatedToDoItems[index][1] = !updatedToDoItems[index][1];
+    
     setToDoItems(updatedToDoItems);
+
   };
 
   const deleteToDoItem = (targetIndex) => {

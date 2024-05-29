@@ -11,7 +11,7 @@ const AddToDoListItemBar = ({ toDoList, toDoListSet }) => {
 
   const handleAddItem = () => {
     if (inputValue.trim()) {
-      toDoListSet([...toDoList, [inputValue, false]]);
+      toDoListSet([[inputValue, false], ...toDoList]);
       setInputValue("");
     }
   };

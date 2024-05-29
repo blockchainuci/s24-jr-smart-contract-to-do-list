@@ -3,23 +3,20 @@ import styles from "./ToDoListItem.module.css";
 
 const ToDoItem = ({ taskName, taskStatus, changeStatus, index }) => {
 
-  const [isClicked, setIsClicked] = useState(false);
+  const [clickStatus, setClickStatus] = useState("notClicked");
 
   return (
-    <div className={styles["to-do-item"]}>
+    <div 
+      className={styles[clickStatus]} 
+      onClick={() => { clickStatus == "notClicked" ? setClickStatus("clicked") : setClickStatus("notClicked")}}
+      // className={clickStatus}
+      >
       <p className="to-do-text">{taskName}</p>
       <input
         className={styles["to-do-checkbox"]}
         type="checkbox"
         checked={taskStatus}
         onChange={() => changeStatus(index)}
-        onClick={() => {
-          if(isClicked) {
-            setIsClicked(false);
-          } else {
-            setIsClicked(true);
-          }
-        }}
       ></input>
     </div>
   );
