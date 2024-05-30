@@ -8,8 +8,7 @@ const ToDoItem = ({ taskName, taskStatus, changeStatus, index }) => {
   return (
     <div 
       className={styles[clickStatus]} 
-      onClick={() => { clickStatus == "notClicked" ? setClickStatus("clicked") : setClickStatus("notClicked")}}
-      // className={clickStatus}
+      onClick={() => { clickStatus === "notClicked" ? setClickStatus("clicked") : setClickStatus("notClicked")}}
       >
       <p className="to-do-text">{taskName}</p>
       <input
@@ -17,6 +16,7 @@ const ToDoItem = ({ taskName, taskStatus, changeStatus, index }) => {
         type="checkbox"
         checked={taskStatus}
         onChange={() => changeStatus(index)}
+        onClick={(e) => {e.stopPropagation();}}
       ></input>
     </div>
   );
