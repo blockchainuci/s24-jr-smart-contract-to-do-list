@@ -48,6 +48,7 @@ const ToDoList = () => {
                     changeString={changeToDoString}
                     index={index}
                   ></ToDoItem>
+                  <button>Connect</button>
                   <button onClick={() => deleteToDoItem(index)}>Delete</button>
                 </td>
               </tr>
