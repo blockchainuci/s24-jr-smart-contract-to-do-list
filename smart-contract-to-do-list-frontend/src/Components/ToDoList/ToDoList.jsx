@@ -4,22 +4,27 @@ import ToDoItem from "../ToDoListItem/ToDoListItem";
 import { useEffect, useState } from "react";
 
 const ToDoList = () => {
-
   const [toDoItems, setToDoItems] = useState([]);
 
   const changeToDoStatus = (index) => {
     let updatedToDoItems = [...toDoItems];
     updatedToDoItems[index][1] = !updatedToDoItems[index][1];
-    
-    setToDoItems(updatedToDoItems);
 
+    setToDoItems(updatedToDoItems);
+  };
+
+  const changeToDoString = (index, newToDoString) => {
+    let updatedToDoItems = [...toDoItems];
+    updatedToDoItems[index][0] = newToDoString;
+
+    setToDoItems(updatedToDoItems);
   };
 
   const deleteToDoItem = (targetIndex) => {
     // Filter method: https://react.dev/learn/updating-arrays-in-state
-    setToDoItems(toDoItems.filter((value, itemIndex) => 
-      itemIndex !== targetIndex
-    ))
+    setToDoItems(
+      toDoItems.filter((value, itemIndex) => itemIndex !== targetIndex)
+    );
   };
 
   return (
@@ -40,6 +45,7 @@ const ToDoList = () => {
                     taskName={element[0]}
                     taskStatus={element[1]}
                     changeStatus={changeToDoStatus}
+                    changeString={changeToDoString}
                     index={index}
                   ></ToDoItem>
                   <button onClick={() => deleteToDoItem(index)}>Delete</button>
@@ -49,7 +55,6 @@ const ToDoList = () => {
           })}
         </tbody>
       </table>
-
     </div>
   );
 };
