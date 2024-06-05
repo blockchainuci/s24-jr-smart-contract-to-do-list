@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./AddToDoListItemBar";
+import styles from "./AddToDoListItemBar.module.css"
 
 const AddToDoListItemBar = ({ toDoList, toDoListSet }) => {
   const [inputValue, setInputValue] = useState("");
@@ -10,8 +11,17 @@ const AddToDoListItemBar = ({ toDoList, toDoListSet }) => {
 
   const handleAddItem = () => {
     if (inputValue.trim()) {
-      toDoListSet([...toDoList, [inputValue, false]]);
+      toDoListSet([[inputValue, false], ...toDoList]);
       setInputValue("");
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      if (inputValue.trim()) {
+        toDoListSet([...toDoList, [inputValue, false]]);
+        setInputValue("");
+      }
     }
   };
 
@@ -19,8 +29,10 @@ const AddToDoListItemBar = ({ toDoList, toDoListSet }) => {
     <div>
       <input
         type="text"
+        className={styles["search-bar"]}
         value={inputValue}
         onChange={handleInputChange}
+        onKeyDown={handleKeyPress}
         placeholder="Add a new to-do item"
       />
       <button onClick={handleAddItem}>Add</button>

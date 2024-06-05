@@ -1,7 +1,30 @@
 .to-do-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: column;
   align-items: center;
   gap: 10px;
+}
+
+td {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  width: 100px;
+  height: 20px;
+  /* padding: 15px; */
+  align-self: center;
+  border: 0px;
+  margin-left: 10px;
+  background-color: rgb(56, 71, 96);
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+button:hover {
+  background-color: rgb(56, 71, 96, 0.9);
 }

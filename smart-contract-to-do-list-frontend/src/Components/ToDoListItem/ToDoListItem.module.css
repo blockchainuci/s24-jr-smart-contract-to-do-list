@@ -1,10 +1,50 @@
 .to-do-item {
   background-color: rgb(236, 232, 232);
+  border-radius: 5px;
   display: flex;
-  width: 200px;
+  width: 500px;
   padding: 5px;
   justify-content: space-between;
+  word-break: break-all;
 }
 
-.to-do.text {
+.to-do-text {
+  overflow-wrap: break-word;
 }
+
+.to-do-checkbox{
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  accent-color: greenyellow;
+  align-self: center;
+}
+
+/* .to-do-checkbox:: {
+  border-color: white;
+} */
+
+.to-do-deleteButton{
+  /*TODO*/
+}
+
+.clicked {
+  background-color: rgba(194, 217, 234, 0.8);
+  border-radius: 5px;
+  display: flex;
+  width: 500px;
+  padding: 5px;
+  justify-content: space-between;
+  word-break: break-all;
+}
+
+.notClicked {
+  background-color: rgb(236, 232, 232);
+  border-radius: 5px;
+  display: flex;
+  width: 500px;
+  padding: 5px;
+  justify-content: space-between;
+  word-break: break-all;
+}
+
