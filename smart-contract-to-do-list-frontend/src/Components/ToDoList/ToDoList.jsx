@@ -7,6 +7,13 @@ const ToDoList = () => {
 
   const [toDoItems, setToDoItems] = useState([]);
   const [mostRecentlyDeleted, setMostRecentlyDeleted] = useState([]);
+  const [deleteStatus, setDeleteStatus] = useState(false);
+
+  const changeDeleteStatus = (e) => {
+        if(e.key === "Backspace") { 
+          setDeleteStatus(true)
+        }
+  }
 
   const changeToDoStatus = (index) => {
     let updatedToDoItems = [...toDoItems];

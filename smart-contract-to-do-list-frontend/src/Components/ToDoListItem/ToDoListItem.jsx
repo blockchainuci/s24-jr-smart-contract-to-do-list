@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from "./ToDoListItem.module.css";
 
-const ToDoItem = ({ taskName, taskStatus, changeStatus, index }) => {
+const ToDoItem = ({ taskName, taskStatus, changeStatus, index, setDeleteStatus }) => {
 
   const [clickStatus, setClickStatus] = useState("notClicked");
 
@@ -10,7 +10,7 @@ const ToDoItem = ({ taskName, taskStatus, changeStatus, index }) => {
       className={styles[clickStatus]} 
       onClick={() => { clickStatus === "notClicked" ? setClickStatus("clicked") : setClickStatus("notClicked")}}
       tabIndex={0}
-      onKeyDown={(e) => {e.key === "Enter" ? console.log("¡Hola!"): console.log("Adios")}}
+      onKeyDown={setDeleteStatus}
       >
       <p className="to-do-text">{taskName}</p>
       <input
