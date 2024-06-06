@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 const ToDoList = () => {
 
   const [toDoItems, setToDoItems] = useState([]);
+  const [mostRecentlyDeleted, setMostRecentlyDeleted] = useState([]);
 
   const changeToDoStatus = (index) => {
     let updatedToDoItems = [...toDoItems];
@@ -20,11 +21,17 @@ const ToDoList = () => {
     setToDoItems(toDoItems.filter((value, itemIndex) => 
       itemIndex !== targetIndex
     ))
+    setMostRecentlyDeleted(targetIndex);
   };
+
+  const undo = () => {
+    console.log(toDoItems[mostRecentlyDeleted]);
+  }
 
   return (
     <div className={styles["to-do-list"]}>
       <h1>To-do List App</h1>
+      <h2 onClick={undo}>Undo</h2>
       <AddToDoListItemBar
         toDoList={toDoItems}
         toDoListSet={setToDoItems}

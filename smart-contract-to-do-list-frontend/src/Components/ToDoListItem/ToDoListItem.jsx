@@ -9,6 +9,8 @@ const ToDoItem = ({ taskName, taskStatus, changeStatus, index }) => {
     <div 
       className={styles[clickStatus]} 
       onClick={() => { clickStatus === "notClicked" ? setClickStatus("clicked") : setClickStatus("notClicked")}}
+      tabIndex={0}
+      onKeyDown={(e) => {e.key === "Enter" ? console.log("¡Hola!"): console.log("Adios")}}
       >
       <p className="to-do-text">{taskName}</p>
       <input
